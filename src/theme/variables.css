@@ -1,2 +1,19 @@
 /* For information on how to create your own theme, please refer to:
 http://ionicframework.com/docs/theming/ */
+
+:root {
+  --ion-color-primary: #a78bfa;
+  --ion-color-primary-rgb: 167,139,250;
+
+  --ion-background-color: #f7f7fb;
+  --ion-text-color: #2b2b2b;
+
+  --pastel-purple: #e9e7fd;
+  --pastel-green: #e6f4ea;
+  --pastel-blue: #e6f0fb;
+  --pastel-orange: #fff1e6;
+  --pastel-gray: #f0f0f3;
+  --pastel-red: #ff6961;
+
+  --card-radius: 18px;
+}
