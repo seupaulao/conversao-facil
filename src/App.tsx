@@ -24,20 +24,23 @@ import {
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
 
+import { AdProvider } from './context/AdContext';
 import HomeTab from './pages/HomeTab';
 import { IonReactRouter } from '@ionic/react-router';
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/home" component={HomeTab} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
-        </IonRouterOutlet>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+  <AdProvider>
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/home" component={HomeTab} />
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+          </IonRouterOutlet>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  </AdProvider>
 );
 
 export default App;

@@ -6,14 +6,29 @@ import {
   scaleOutline,
   thermometerOutline,
 } from "ionicons/icons";
+import { useEffect, useState } from "react";
 
+import AdModal from "../components/AdModal";
+import { AdService } from "../services/AdService";
 import CategoryCard from "../components/CategoryCard";
 import { ConversionCategory } from "../types";
 import ConverterCard from "../components/ConverterCard";
-import { useState } from "react";
 
 const HomeTab: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ConversionCategory | null>(null);
+  const [showAdModal, setShowAdModal] = useState(false);
+  const [modalType, setModalType] = useState<'rewarded' | 'success'>('rewarded');
+
+  useEffect(() => {
+    AdService.getInstance().setOnRewardCallback(() => {
+      setModalType('success');
+      setShowAdModal(true);
+    });
+    AdService.getInstance().setOnShowRewardedCallback(() => {
+      setModalType('rewarded');
+      setShowAdModal(true);
+    });
+  }, []);
 
   const categories: { key: ConversionCategory; title: string; icon: string; color: string }[] = [
     { key: "comprimento", title: "Comprimento", icon: resizeOutline, color: "#e9e7fd" },
@@ -43,6 +58,7 @@ const HomeTab: React.FC = () => {
         </div>
 
         <ConverterCard category={selectedCategory} />
+        <AdModal isOpen={showAdModal} onClose={() => setShowAdModal(false)} type={modalType} />
       </IonContent>
     </IonPage>
   );

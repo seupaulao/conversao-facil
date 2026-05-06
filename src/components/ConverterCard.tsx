@@ -9,6 +9,8 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 
+import { AdService } from "../services/AdService";
+
 interface ConverterCardProps {
   category: ConversionCategory | null;
 }
@@ -54,8 +56,9 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
     const valuesAreEqual = units.every(unit => newValues[unit.symbol] === values[unit.symbol]);
     if (!valuesAreEqual) {
       setValues(newValues);
+      AdService.getInstance().incrementConversion();
     }
-  }, [category, lastChangedUnit, values[lastChangedUnit], units]);
+  }, [category, lastChangedUnit, lastChangedUnit ? values[lastChangedUnit] : '', units]);
 
   const handleClear = () => {
     setValues({});
@@ -107,7 +110,9 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
           </IonItem>
         ))}
 
-        
+        <div id="ad-banner-bottom" style={{ height: 50, backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 16 }}>
+          {/* Banner Ad will be loaded here */}
+        </div>
       </IonCardContent>
     </IonCard>
   );
