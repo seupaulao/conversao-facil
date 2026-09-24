@@ -1,7 +1,6 @@
 import { IonButton, IonContent, IonModal, IonText } from '@ionic/react';
 
 import { AdService } from '../services/AdService';
-import { useState } from 'react';
 
 interface AdModalProps {
   isOpen: boolean;

@@ -1,4 +1,4 @@
-import { AdMob, AdMobRewardItem, BannerAdOptions, BannerAdPosition, BannerAdSize, RewardAdOptions } from '@capacitor-community/admob';
+import { AdMob, BannerAdOptions, BannerAdPosition, BannerAdSize, RewardAdOptions } from '@capacitor-community/admob';
 
 const BANNER_AD_UNIT_ID = 'ca-app-pub-3940256099942544/6300978111';  // Test ID
 const REWARDED_AD_UNIT_ID = 'ca-app-pub-3940256099942544/5224354917';  // Test ID

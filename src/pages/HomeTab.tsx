@@ -1,10 +1,14 @@
 import { IonContent, IonPage } from "@ionic/react";
 import {
+  barbellOutline,
   carSportOutline,
   flaskOutline,
+  mapOutline,
+  planetOutline,
   resizeOutline,
   scaleOutline,
   thermometerOutline,
+  waterOutline,
 } from "ionicons/icons";
 import { useEffect, useState } from "react";
 
@@ -36,6 +40,10 @@ const HomeTab: React.FC = () => {
     { key: "volume", title: "Volume", icon: flaskOutline, color: "#e6f0fb" },
     { key: "temperatura", title: "Temperatura", icon: thermometerOutline, color: "#fff1e6" },
     { key: "velocidade", title: "Velocidade", icon: carSportOutline, color: "#ffcccc" },
+    { key: "astronomia", title: "Astronomia", icon: planetOutline, color: "#dcd6f7" },
+    { key: "peso-coreano", title: "Peso Coreano", icon: barbellOutline, color: "#ffd9b3" },
+    { key: "volume-coreano", title: "Volume Coreano", icon: waterOutline, color: "#b5e7d3" },
+    { key: "distancia-coreana", title: "Distância Coreana", icon: mapOutline, color: "#bfdbff" },
   ];
 
   return (

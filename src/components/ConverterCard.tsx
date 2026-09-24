@@ -32,8 +32,7 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
     setLastChangedUnit(unitSymbol);
   };
 
-  // Calculate conversions when the selected input value changes
-  useEffect(() => {
+  const handleCalculate = () => {
     if (!category || !lastChangedUnit) return;
 
     const currentValue = values[lastChangedUnit] ?? "";
@@ -41,24 +40,18 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
     if (isNaN(inputValue)) return;
 
     const newValues: Record<string, string> = {};
-    let hasNonZero = false;
-
     units.forEach(unit => {
       if (unit.symbol === lastChangedUnit) {
         newValues[unit.symbol] = currentValue;
       } else {
         const converted = convert(category, inputValue, lastChangedUnit, unit.symbol);
         newValues[unit.symbol] = formatResult(converted);
-        if (converted !== 0) hasNonZero = true;
       }
     });
 
-    const valuesAreEqual = units.every(unit => newValues[unit.symbol] === values[unit.symbol]);
-    if (!valuesAreEqual) {
-      setValues(newValues);
-      AdService.getInstance().incrementConversion();
-    }
-  }, [category, lastChangedUnit, lastChangedUnit ? values[lastChangedUnit] : '', units]);
+    setValues(newValues);
+    AdService.getInstance().incrementConversion();
+  };
 
   const handleClear = () => {
     setValues({});
@@ -82,7 +75,11 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
     massa: "Massa",
     volume: "Volume",
     temperatura: "Temperatura",
-    velocidade: "Velocidade"
+    velocidade: "Velocidade",
+    astronomia: "Astronomia",
+    'peso-coreano': "Peso Coreano",
+    'volume-coreano': "Volume Coreano",
+    'distancia-coreana': "Distância Coreana"
   };
 
   return (
@@ -94,21 +91,49 @@ const ConverterCard: React.FC<ConverterCardProps> = ({ category }) => {
         </p>
 
         {units.map((unit) => (
-          <IonItem key={unit.symbol} style={{ borderRadius: 12, marginBottom: 8 }}>
-            <IonLabel slot="start" style={{ minWidth: 80 }}>
+          <IonItem
+            key={unit.symbol}
+            className="converter-item"
+            style={{ alignItems: "center" }}
+          >
+            <IonLabel slot="start" style={{ minWidth: 80, margin: 0 }}>
               <span style={{ fontSize: 20 }}>{unit.icon}</span>
               <span style={{ marginLeft: 8, fontSize: 14 }}>{unit.symbol}</span>
             </IonLabel>
             <IonInput
               slot="end"
-              
               value={values[unit.symbol] || ""}
               placeholder="0"
               onIonChange={(e) => handleValueChange(unit.symbol, e.detail.value || "")}
-              style={{ textAlign: "right", color: "#f9d71c" }}
+              style={{
+                textAlign: "right",
+                margin: 0,
+                borderRadius: 8,
+              }}
             />
           </IonItem>
         ))}
+
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", gap: 16, marginTop: 16 }}>
+          <IonButton
+            onClick={handleCalculate}
+            color="warning"
+            fill="solid"
+  style={{
+    "--background": "#f5c542",
+    "--background-activated": "#d7ad3a",
+    "--color": "#000000",
+  }}
+          >
+            CALCULAR
+          </IonButton>
+          <IonButton
+            onClick={handleClear}
+            color="primary"
+          >
+            LIMPAR
+          </IonButton>
+        </div>
 
         <div id="ad-banner-bottom" style={{ height: 50, backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 16 }}>
           {/* Banner Ad will be loaded here */}

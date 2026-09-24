@@ -1,11 +1,22 @@
 /* For information on how to create your own theme, please refer to:
 http://ionicframework.com/docs/theming/ */
 
-:root {
+/* :root {
   --ion-color-primary: #a78bfa;
-  --ion-color-primary-rgb: 167,139,250;
+  --ion-color-primary-rgb: 167, 139, 250;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #927adb;
+  --ion-color-primary-tint: #af97fb;
 
-  --ion-background-color: #f7f7fb;
+  --ion-color-warning: #f5c542;
+  --ion-color-warning-rgb: 245, 197, 66;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #d7ad3a;
+  --ion-color-warning-tint: #f6ca55;
+
+  --ion-background-color: #ffe9ef;
   --ion-text-color: #2b2b2b;
 
   --pastel-purple: #e9e7fd;
@@ -17,3 +28,18 @@ http://ionicframework.com/docs/theming/ */
 
   --card-radius: 18px;
 }
+
+.converter-item {
+  --inner-padding-top: 0px;
+  --inner-padding-bottom: 0px;
+  --min-height: 48px;
+}
+
+ion-input {
+  --background: #ffffff;
+  --color: #000000;
+}
+ion-input::part(native-input) {
+  background: #ffffff;
+  color: #000000;
+} */

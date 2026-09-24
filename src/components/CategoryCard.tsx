@@ -2,7 +2,7 @@ import { IonIcon } from "@ionic/react";
 
 interface CategoryCardProps {
   title: string;
-  icon: any;
+  icon: string;
   color: string;
   selected?: boolean;
   onClick?: () => void;

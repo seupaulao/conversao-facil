@@ -13,7 +13,7 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+/* import '@ionic/react/css/palettes/dark.system.css'; */
 /* Theme variables */
 import './theme/variables.css';
 
@@ -30,7 +30,7 @@ import { IonReactRouter } from '@ionic/react-router';
 
 const App: React.FC = () => (
   <AdProvider>
-    <IonApp>
+    <IonApp style={{ colorScheme: 'light' }}>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
